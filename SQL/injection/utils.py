@@ -1,24 +1,22 @@
 import psycopg2
 
-# SQL intilization
-def SQLinit():
+def SQL_init():
     """
     Initialize the database connection
     """
     try:
-        conn = psycopg2.connect("dbname=SQLi", user="postgres")
+        conn = psycopg2.connect(database="sqli", user="postgres")
         cur = conn.cursor()
         return cur, conn
-        print("Hello")
     except:
         print("Unable to connect to the database")
 
-# SQL query
-def SQLquery(cur, conn, query, commit=False):
+def SQL_RunQuery(query, commit=False):
     """
     Execute a query on the database
     """
     try:
+        cur, conn = SQL_init()
         cur.execute(query)
         if commit:
             conn.commit()
@@ -39,6 +37,3 @@ def SQLclose(cur, conn):
         conn.close()
     except:
         print("Unable to close the connection")
-
-# Intialize the database connection
-# SQLinit()
