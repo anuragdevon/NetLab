@@ -134,6 +134,7 @@ def secure_user_login(request):
     except Exception as e:
         return Response(e.args[0], status.HTTP_400_BAD_REQUEST)
 
+# Insecure
 {
 "username":"nitish",
 "password":"123"
@@ -150,6 +151,8 @@ def secure_user_login(request):
     "username":"anurag",
     "password":"unknown' or '1'='1"
 }
+
+# Secure
 {
     "username":"apurba",
     "password":"789"

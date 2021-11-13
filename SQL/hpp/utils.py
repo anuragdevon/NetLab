@@ -55,6 +55,6 @@ def uuid_generator():
 
 def token_generator(amount):
     salt = "80u340w50n$hgsrngt9834t5h083&hnisf523bqtkrf^658"
-    token = hashlib.sha256((amount+salt).encode('utf-8')).hexdigest()
+    token = hashlib.sha256((str(amount)+salt).encode('utf-8')).hexdigest()
     return token
 
