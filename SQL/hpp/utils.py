@@ -1,3 +1,4 @@
+# Imports
 import psycopg2
 import hashlib
 import uuid
@@ -29,6 +30,7 @@ def SQL_RunQuery(query, commit=False):
         print("Unable to execute the query")
         return e
 
+# SQL close
 def SQLclose(cur, conn):
     """
     Close the database connection
@@ -50,3 +52,9 @@ def uuid_generator():
     Generate a random UUID
     """
     return uuid.uuid4()  
+
+def token_generator(amount):
+    salt = "80u340w50n$hgsrngt9834t5h083&hnisf523bqtkrf^658"
+    token = hashlib.sha256((amount+salt).encode('utf-8')).hexdigest()
+    return token
+
