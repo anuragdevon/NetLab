@@ -1,4 +1,5 @@
 # Imports
+from typing import AnyStr
 import psycopg2
 import hashlib
 import uuid
@@ -57,4 +58,3 @@ def token_generator(amount):
     salt = "80u340w50n$hgsrngt9834t5h083&hnisf523bqtkrf^658"
     token = hashlib.sha256((str(amount)+salt).encode('utf-8')).hexdigest()
     return token
-

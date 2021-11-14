@@ -13,11 +13,19 @@ def user_get_money_test(request, username):
     try:
         response = {"code": status.HTTP_200_OK, "message": "No Error"}
         try:
-            response = {"code": status.HTTP_200_OK, "message": f"{username}"}        
+            # User Get money
+            query = f"SELECT amount FROM injection WHERE username = '{username}';"
+            amount = SQL_RunQuery(query, commit=False)
+            if amount == []:
+                response = {"code": status.HTTP_404_NOT_FOUND, "message": "User not found"}
+            else:
+                # response["message"] = amount[0][0]
+                response = {"code": status.HTTP_200_OK, "message": f"{username}'s amount: {amount[0][0]}"}
+
             return Response(response)
 
         except Exception as e:
-            response = {"code": status.HTTP_500_INTERNAL_SERVER_ERROR, "message": str(e)}
+            response = {"code": status.HTTP_500_INTERNAL_SERVER_ERROR, "message": "Internal Server Error"}
             return Response(response)
 
     except Exception as e:
@@ -178,9 +186,10 @@ def user_add_money_safe(request, username, password, amount, token):
                 else:
                     response = {"code": status.HTTP_401_UNAUTHORIZED, "message": "Invalid Username entered!"}
 
-                return Response(response)
             else:
                 response = {"code": status.HTTP_401_UNAUTHORIZED, "message": "Invalid token"}
+                
+            return Response(response)
         except Exception as e:
             response = {"code": status.HTTP_500_INTERNAL_SERVER_ERROR, "message": str(e)}
             return Response(response)
@@ -254,3 +263,4 @@ def user_transfer_money_safe(request, username, amount, receiver, token):
     "amount": 5000
 }
 
+## Password is always constant, so keeping password in url doesn't matter

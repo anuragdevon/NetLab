@@ -7,7 +7,7 @@ from .utils import *
 # Views
 # User Add
 @api_view(["POST"])
-def insecure_user_signup(request):
+def user_signup_unsafe(request):
     try:
         inputData = request.data
         username = inputData["username"]
@@ -40,7 +40,7 @@ def insecure_user_signup(request):
 
 # User Login 
 @api_view(["POST"])
-def insecure_user_login(request):
+def user_login_unsafe(request):
     try:
         inputData = request.data
         username = inputData["username"]
@@ -69,7 +69,7 @@ def insecure_user_login(request):
 # SQL injection Prevention
 # User Add
 @api_view(["POST"])
-def secure_user_signup(request):
+def user_signup_safe(request):
     try:
         # print("!!!!")
         inputData = request.data
@@ -104,7 +104,7 @@ def secure_user_signup(request):
 
 # User Login 
 @api_view(["POST"])
-def secure_user_login(request):
+def user_login_safe(request):
     try:
         inputData = request.data
         username = inputData["username"]
@@ -160,6 +160,10 @@ def secure_user_login(request):
 {
     "username":"apurba",
     "password":"unknown' or '1'='1"
+}
+{
+    "username": "milind",
+    "password": "69"
 }
 # Injection Password
 # unknown' or '1'='1

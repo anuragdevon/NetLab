@@ -2,8 +2,8 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('insecure/signup/', views.insecure_user_signup),
-    path('insecure/login/', views.insecure_user_login),
-    path('secure/signup/', views.secure_user_signup),
-    path('secure/login/', views.secure_user_login),
+    path('insecure/signup/', views.user_signup_unsafe),
+    path('insecure/login/', views.user_login_unsafe),
+    path('secure/signup/', views.user_signup_safe),
+    path('secure/login/', views.user_login_safe),
 ]
