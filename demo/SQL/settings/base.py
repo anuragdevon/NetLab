@@ -72,6 +72,7 @@ TEMPLATES = [
         },
     },
 ]
+print(BASE_DIR)
 
 WSGI_APPLICATION = 'SQL.wsgi.application'
 

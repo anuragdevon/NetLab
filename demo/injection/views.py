@@ -133,39 +133,3 @@ def user_login_safe(request):
 
     except Exception as e:
         return Response(e.args[0], status.HTTP_400_BAD_REQUEST)
-
-# Insecure
-{
-"username":"nitish",
-"password":"123"
-}
-{
-"username":"nitish",
-"password":"unknown' or '1'='1"
-}
-{
-    "username":"anurag",
-    "password":"456"
-}
-{
-    "username":"anurag",
-    "password":"unknown' or '1'='1"
-}
-
-# Secure
-{
-    "username":"apurba",
-    "password":"789"
-}
-{
-    "username":"apurba",
-    "password":"unknown' or '1'='1"
-}
-{
-    "username": "milind",
-    "password": "69"
-}
-# Injection Password
-# unknown' or '1'='1
-
-# TODO: make different Database for injection and prevention
